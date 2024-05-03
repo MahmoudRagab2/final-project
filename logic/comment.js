@@ -49,8 +49,8 @@ function generateCommentHTML(comment) {
           : "../img/user avatar.png"
       }" alt="user image" id="${
     comment.author.id
-  }" class="img-user-comment rounded-circle cursor-pointer" style="width: 40px; height: 40px;">
-      <div class="body-comment w-100">
+  }" class="img-user-comment rounded-circle cursor-pointer object-fit-cover" style="width: 40px; height: 40px;">
+      <div class="body-comment">
         <h2 class="name-user fs-5 my-1 cursor-pointer" id="${
           comment.author.id
         }">${comment.author.name}</h2>
