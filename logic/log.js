@@ -8,10 +8,11 @@ const incorrect = document.querySelectorAll(".incorrect-log");
 const create_img_inp = document.getElementById("profile-img-c");
 const btn_req = document.getElementById("btn-req");
 const create_btn = document.getElementById("btn-new-acc");
+
 const create_name_inp = document.getElementById("name-c");
-const create_email_inp = document.getElementById("email-c");
 const create_username_inp = document.getElementById("username-c");
 const create_pass_inp = document.getElementById("pass-c");
+const create_email_inp = document.getElementById("email-c");
 
 // Automatic login function
 logauto();
@@ -136,33 +137,32 @@ function log(e, p) {
 function createNewUser() {
   const myHeaders = new Headers();
   myHeaders.append("Accept", "application/json");
+
   const formdata = new FormData();
   formdata.append("name", create_name_inp.value);
+  formdata.append("username", create_username_inp.value);
+  formdata.append("password", create_pass_inp.value);
   if (create_email_inp.value.length > 0) {
     formdata.append("email", create_email_inp.value);
   }
-  formdata.append("username", create_username_inp.value);
-  formdata.append("password", create_pass_inp.value);
   if (create_img_inp.files.length > 0) {
     formdata.append("image", create_img_inp.files[0]);
   }
+
   const requestOptions = {
     method: "POST",
     headers: myHeaders,
     body: formdata,
     redirect: "follow",
   };
-  fetch(
-    `${url_api}/register?username=${create_username_inp.value}&password=${create_pass_inp.value}&name=${create_name_inp.value}`,
-    requestOptions
-  )
+  fetch(`${url_api}/register`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
+      console.log(result);
       if (result.errors) {
-        stopLoad(); // Hide loading indicator
+        stopLoad();
         if (result.errors.email) {
-          create_email_inp.nextElementSibling.textContent =
-            result.errors.email[0];
+          create_email_inp.nextElementSibling.textContent = result.errors.email[0];
           create_email_inp.nextElementSibling.classList.remove("d-none"); // Show email error
         }
         if (result.errors.password) {

@@ -40,8 +40,8 @@ function img_nav() {
     if (typeof JSON.parse(getun).profile_image === "string") {
       const get_my_img_profile = JSON.parse(getun).profile_image;
       img.src = get_my_img_profile;
-      img.id = JSON.parse(getun).id;
     }
+    img.id = JSON.parse(getun).id;
 
     img.addEventListener("click", () => {
       window.location.href = `../profile.html?id=${img.id}`;
