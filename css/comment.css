@@ -1,7 +1,21 @@
 /* Navbar */
+
+/* Navbar */
 .nav-cs {
   backdrop-filter: blur(40px);
   box-shadow: 0 0 20px 4px #0000002f;
+}
+
+.nav-cs .my-img {
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+button.navbar-toggler,
+.btn-close:focus {
+  color: transparent;
+  box-shadow: 0 0 0 0 transparent;
 }
 
 button.navbar-toggler,
