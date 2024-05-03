@@ -183,21 +183,3 @@ function createNewUser() {
       }
     });
 }
-
-// Function to show loading indicator
-function load() {
-  let divHTML1 = document.createElement("div");
-  divHTML1.classList.add("load");
-  divHTML1.classList.add("show");
-  let divHTML2 = document.createElement("div");
-  divHTML2.classList.add("progress-cs");
-  divHTML2.classList.add("show");
-
-  divHTML1.appendChild(divHTML2);
-  document.body.appendChild(divHTML1);
-}
-
-// Function to hide loading indicator
-function stopLoad() {
-  document.querySelector(".load").remove();
-}

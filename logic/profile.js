@@ -110,7 +110,8 @@ function addPostsToProfile() {
     .then((response) => response.json())
     .then((posts) => {
       if (posts.data.length > 0) {
-        for (const post of posts.data) {
+        const reversedPosts = posts.data.reverse();
+        for (const post of reversedPosts) {
           posts_box.innerHTML += `
           <div class="card card-cs border-0">
           <div class="card-header card-header-cs d-flex py-2 px-1  gap-1 align-items-center justify-content-between ">
