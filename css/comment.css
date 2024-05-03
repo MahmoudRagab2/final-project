@@ -1,0 +1,108 @@
+/* Navbar */
+.nav-cs {
+  backdrop-filter: blur(40px);
+  box-shadow: 0 0 20px 4px #0000002f;
+}
+
+button.navbar-toggler,
+.btn-close:focus {
+  color: transparent;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+/* Cursor */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Comments */
+.comment-posts-cs {
+  margin: 80px auto 24px;
+}
+
+.comment-posts-cs .card-cs {
+  background-color: #f1f1f1;
+  box-shadow: 0 0 20px 5px #0000000c;
+}
+
+.comment-posts-cs .img-user,
+.comments .img-user {
+  width: 40px;
+  height: 40px;
+}
+
+.comment-posts-cs .card-header-cs .user-name-cs {
+  font-size: 20px;
+}
+
+.comment-posts-cs hr:last-child {
+  display: none;
+}
+
+.comment-posts-cs .comments {
+  background-color: #0000000c;
+}
+
+.comment-posts-cs .comments .name-user {
+  width: fit-content;
+}
+
+/* Images */
+.img-main {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+@media (max-width: 576px) {
+  .img-main {
+    width: 100% !important;
+  }
+}
+
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  filter: blur(4px) brightness(.6);
+}
+
+/* Loading */
+.load {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3450;
+  background: #00000068;
+}
+
+.load .progress-cs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background-color: #1074c7;
+  animation: load 1.5s ease-in infinite;
+}
+
+@keyframes load {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+
+  50% {
+    width: 50%;
+    left: 50%;
+  }
+
+  100% {
+    width: 0%;
+    left: 100%;
+  }
+}

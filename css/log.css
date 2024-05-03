@@ -1,0 +1,101 @@
+/* Body */
+body {
+  background-color: #fefeff;
+}
+
+/* Form */
+.form {
+  box-shadow: 0 0 30px 5px #00000018;
+}
+
+.eye-cs {
+  cursor: pointer;
+}
+
+/* Modal Dialog Responsiveness */
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: calc(100% - 1rem);
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    max-width: calc(100% - 2rem);
+    width: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-width: 900px;
+    width: auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-dialog {
+    max-width: 1000px;
+    width: auto;
+  }
+}
+
+/* Image Preview */
+#imagePreview {
+  text-align: center;
+}
+
+#imagePreview img {
+  width: 80%;
+}
+
+/* Responsive Image Preview and Row */
+.row-cs {
+  width: calc(50% - 8px);
+}
+
+@media (max-width: 768px) {
+  .row-cs,
+  #imagePreview img {
+    width: 100%;
+  }
+}
+
+/* Loader */
+.load {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3450;
+  background: #00000068;
+}
+
+.load .progress-cs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background-color: #1074c7;
+  animation: load 1.5s ease-in infinite;
+}
+
+@keyframes load {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+
+  50% {
+    width: 50%;
+    left: 50%;
+  }
+
+  100% {
+    width: 0%;
+    left: 100%;
+  }
+}

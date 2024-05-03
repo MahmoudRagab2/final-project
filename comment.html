@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="I built this website to train on using the API.">
+  <title>Comment</title>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/comment.css">
+</head>
+
+<body>
+
+  <nav class="navbar nav-cs navbar-expand-lg rounded-bottom-3 fixed-top px-2">
+    <div class="container p-0 d-flex gap-2 align-items-center">
+      <a class="navbar-brand" href="./home.html">LOGO</a>
+      <div class="text-end d-flex align-items-center">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <img src="img/user avatar.png" alt="user image"
+          class="my-img order-1 cursor-pointer rounded-circle d-lg-none object-fit-cover" style="margin-left: 10px; width:40px; height: 40px;">
+      </div>
+      <img src="img/user avatar.png" alt="user image"
+        class="my-img order-1 cursor-pointer rounded-circle d-none d-lg-block object-fit-cover"
+        style="margin-left: 10px; width:40px; height: 40px;">
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="./home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="./users.html">Users</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-md comment-posts-cs col-xl-8"></div>
+
+</body>
+
+<!-- JS File -->
+<script src="./logic/main.js"></script>
+
+<!-- Import Bootstrap JS -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- JS File -->
+<script src="./logic/comment.js"></script>
+
+</html>

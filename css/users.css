@@ -1,0 +1,115 @@
+/* Variables */
+:root {
+  --main-color: #0d6efd;
+  --body-color: #fefeff;
+  --card-color: #f1f1f1;
+}
+
+/* General Styles */
+body {
+  background-color: var(--body-color);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--main-color) var(--body-color);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+h2,
+p {
+  word-break: break-all;
+}
+
+/* Navbar */
+.nav-cs {
+  backdrop-filter: blur(40px);
+  box-shadow: 0 0 20px 4px #0000002f;
+}
+
+.nav-cs .my-img {
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+button.navbar-toggler,
+.btn-close:focus {
+  color: transparent;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+/* Content */
+.users {
+  margin: 80px auto 24px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.users .user {
+  background-color: var(--card-color);
+  box-shadow: 0 0 20px 0 #0d6dfd21;
+  width: calc(50% - 13px);
+}
+
+@media (max-width: 575px) {
+  .users .user {
+    width: 100%;
+  }
+}
+
+.users .user-img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Loading */
+.user-img-loading,
+.name-loading,
+.username-loading,
+.posts-count-loading,
+.show-profile-loading {
+  animation: fade-loading 2s infinite;
+}
+
+.user-img-loading {
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.name-loading {
+  width: 180px;
+  height: 35px;
+}
+
+.username-loading {
+  width: 140px;
+  height: 25px;
+  margin-bottom: 5px !important;
+}
+
+.posts-count-loading {
+  width: 80px;
+  height: 25px;
+}
+
+.show-profile-loading {
+  height: 35px;
+}
+
+@keyframes fade-loading {
+  0% {
+    background-color: #bbb;
+  }
+  
+  50% {
+    background-color: #d1d1d1;
+  }
+  
+  100% {
+    background-color: #bbb;
+  }
+}

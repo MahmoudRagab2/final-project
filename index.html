@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="I built this website to train on using the API.">
+  <meta name="theme-color" content="light">
+  <title>Login | Register</title>
+
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/log.css">
+</head>
+
+<body class="d-flex align-items-center justify-content-center vh-100">
+
+  <!-- Start Modal -->
+  <div class="modal fade" id="form-reg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create New Account</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="d-flex gap-3 flex-wrap">
+            <div class="row-cs">
+              <div class="mb-3">
+                <label for="name-c" class="form-label">Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="name-c" placeholder="John Cena">
+                <small class="text-danger fw-semibold w-100 d-none error-msg-c">This Field Is Required</small>
+              </div>
+              <div class="mb-3">
+                <label for="username-c" class="form-label">Username <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="username-c" placeholder="username">
+                <small class="text-danger fw-semibold w-100 d-none error-msg-c">This Field Is Required</small>
+              </div>
+              <div class="mb-3">
+                <label for="pass-c" class="form-label">Password <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" id="pass-c" placeholder="password">
+                <small class="text-danger fw-semibold w-100 d-none error-msg-c">This Field Is Required</small>
+              </div>
+              <div class="mb-3">
+                <label for="email-c" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email-c" placeholder="name@example.com">
+              </div>
+            </div>
+            <div class="row-cs">
+              <label class="form-label">Profile Image</label>
+              <input type="file" class="form-control" id="profile-img-c" accept="image/*"
+                aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+              <div class="mt-2 d-flex justify-content-center" id="imagePreview"></div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="btn-new-acc">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
+
+  <div class="container-md rounded d-flex flex-column preal align-items-center justify-content-center">
+    <div class="disc">
+      <h1>Website Name</h1>
+      <p class="w-75">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, laborum. Quia, distinctio vitae
+        nihil consequuntur fugiat doloremque error reprehenderit tempora blanditiis, nemo neque magni? Sit temporibus
+        quod explicabo laborum quaerat?</p>
+    </div>
+    <div class="form mt-5 p-4 rounded col-12 col-xl-8" style="background-color: #f1f1f1;">
+      <h1 class="text-center mb-4">Login</h1>
+      <label for="username-inp">Username</label>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">@</span>
+        <input id="username-inp-log" type="text" class="form-control rounded-end" placeholder="username"
+          aria-label="Username" aria-descrbribedby="basic-addon1">
+        <small class="text-danger fw-semibold incorrect-log w-100 d-none">The entered data is incorrect</small>
+      </div>
+      <label for="pass-inp">Password</label>
+      <div class="input-group mb-3">
+        <i class="bi bi-eye-slash input-group-text eye-cs" id="basic-addon2"></i>
+        <input id="pass-inp-log" type="password" class="form-control rounded-end" placeholder="password"
+          aria-label="Username" aria-describedby="basic-addon2">
+        <small class="text-danger fw-semibold incorrect-log w-100 d-none">The entered data is incorrect</small>
+      </div>
+      <div class="d-flex gap-3 flex-wrap">
+        <button class="flex-grow-1 btn btn-primary" id="btn-login">Login</button>
+        <button class="flex-grow-1 btn btn-outline-primary" id="btn-req" data-bs-toggle="modal"
+          data-bs-target="#form-reg">Create New Account</button>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+
+<!-- JS File -->
+<script src="./logic/main.js"></script>
+
+<!-- Import Bootstrap JS -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Import Custom JS -->
+<script src="logic/log.js"></script>
+
+</html>
