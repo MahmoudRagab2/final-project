@@ -3,12 +3,19 @@ const getun = localStorage.getItem("u");
 const my_img_nav = document.querySelectorAll(".my-img");
 const data_box = document.querySelector(".data-box");
 const posts_box = document.querySelector(".posts-cs");
+
 const btn_new_post = document.getElementById("btn-new-post");
-const title = document.getElementById("c-title-p");
-const body = document.getElementById("c-body-p");
-const img = document.getElementById("c-img-p");
+const btn_edit_post = document.getElementById("btn-edit-post");
+
+const c_title_p = document.getElementById("c-title-p");
+const c_body_p = document.getElementById("c-body-p");
+const c_img_p = document.getElementById("c-img-p");
+
+const e_title_p = document.getElementById("e-title-p");
+const e_body_p = document.getElementById("e-body-p");
+
 const gett = localStorage.getItem("t");
-const form = document.querySelector("#form-post");
+
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get("id");
 
@@ -16,7 +23,7 @@ if (!gett) {
   window.location.replace("../index.html");
 }
 
-img_nav()
+img_nav();
 
 function getData() {
   fetch(`${url_api}/users/${userId}`)
@@ -26,10 +33,10 @@ function getData() {
       addPostsToProfile();
 
       if (JSON.parse(getun).id == data.data.id) {
-        var div = document.createElement("div");
+        let div = document.createElement("div");
 
         div.setAttribute("data-bs-toggle", "modal");
-        div.setAttribute("data-bs-target", "#form-post");
+        div.setAttribute("data-bs-target", "#form-new-post");
         div.classList.add(
           "add-post-btn",
           "cursor-pointer",
@@ -41,20 +48,6 @@ function getData() {
         icon.classList.add("bi", "bi-plus-lg", "text-white");
         div.appendChild(icon);
         document.body.appendChild(div);
-
-        document.querySelector(".add-post-btn").onclick = function () {
-          title.value = "";
-          body.value = "";
-
-          document.querySelector(".modal-title").textContent =
-            "Create New Post";
-          document.querySelector("#btn-new-post").textContent =
-            "Create New Post";
-          document.querySelector(".modal-dialog").style.maxWidth = "900px";
-          document.querySelector(".row-cs").style.width = "calc(50% - 8px)";
-          img.parentElement.style.display = "block";
-        };
-
         imagePreview();
       }
     });
@@ -132,7 +125,7 @@ function addPostsToProfile() {
               JSON.parse(getun).id == post.author.id
                 ? `
                 <div class="d-flex flex-wrap justify-content-end gap-1">
-                <button class="btn btn-secondary edit-post-btn" id='${
+                <button class="btn btn-secondary"  id='${
                   post.author.id
                 }' onclick="editPost('${encodeURIComponent(
                     JSON.stringify(post)
@@ -183,96 +176,99 @@ function addPostsToProfile() {
     });
 }
 
-showComments()
+showComments();
 
-function createNewPost(req, titleValue, bodyValue, id) {
-  const myHeaders = new Headers();
-  myHeaders.append("Accept", "application/json");
-  if (req == "PUT") {
-    myHeaders.append("Content-Type", "application/json");
-  }
-  myHeaders.append("Authorization", `Bearer ${gett}`);
+function createNewPost() {
+  if (c_title_p.value.trim() && c_body_p.value.trim()) {
+    load();
 
-  const formdata = new FormData();
-  formdata.append("title", titleValue);
-  formdata.append("body", bodyValue);
-  if (img.files.length > 0) {
-    formdata.append("image", img.files[0]);
-  }
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Authorization", `Bearer ${gett}`);
 
-  const raw = JSON.stringify({
-    title: titleValue,
-    body: bodyValue,
-  });
+    const formdata = new FormData();
+    formdata.append("title", c_title_p.value);
+    formdata.append("body", c_body_p.value);
+    if (c_img_p.files.length > 0) {
+      formdata.append("image", c_img_p.files[0]);
+    }
 
-  const requestOptions = {
-    method: req,
-    headers: myHeaders,
-    body: req == "PUT" ? raw : formdata,
-    redirect: "follow",
-  };
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: formdata,
+      redirect: "follow",
+    };
 
-  fetch(`${url_api}/posts${req == "PUT" ? `/${id}` : ""}`, requestOptions).then(
-    () => {
+    fetch(`${url_api}/posts`, requestOptions).then(() => {
       stopLoad();
       window.location.reload();
-    }
-  );
-}
-
-btn_new_post.onclick = () => {
-  if (title.value.trim() && body.value.trim()) {
-    load();
-    createNewPost("POST", title.value, body.value);
+    });
   } else {
-    if (!title.value.trim()) {
-      title.nextElementSibling.classList.remove("d-none");
+    if (!c_title_p.value.trim()) {
+      c_title_p.nextElementSibling.classList.remove("d-none");
     } else {
-      title.nextElementSibling.classList.add("d-none");
+      c_title_p.nextElementSibling.classList.add("d-none");
     }
-    if (!body.value.trim()) {
-      body.nextElementSibling.classList.remove("d-none");
+    if (!c_body_p.value.trim()) {
+      c_body_p.nextElementSibling.classList.remove("d-none");
     } else {
-      body.nextElementSibling.classList.add("d-none");
+      c_body_p.nextElementSibling.classList.add("d-none");
     }
   }
-};
+}
 
-function editPost(postId) {
-  let post = JSON.parse(decodeURIComponent(postId));
+btn_new_post.addEventListener("click", () => {
+  createNewPost();
+});
 
-  title.value = post.title;
-  body.value = post.body;
+function editPost(postObj) {
+  const post = JSON.parse(decodeURIComponent(postObj));
 
-  document.querySelector(".modal-title").textContent = "Edit Post";
-  document.querySelector("#btn-new-post").textContent = "Edit Post";
-  document.querySelector(".modal-dialog").style.maxWidth = "500px";
-  document.querySelector(".row-cs").style.width = "100%";
-  img.parentElement.style.display = "none";
+  e_title_p.value = post.title;
+  e_body_p.value = post.body;
 
-  const form_edit_post = new bootstrap.Modal(
-    document.getElementById("form-post"),
-    {}
+  const postModel = new bootstrap.Modal(
+    document.getElementById("form-edit-post")
   );
-  form_edit_post.toggle();
-
-  btn_new_post.onclick = () => {
-    if (title.value.trim() && body.value.trim()) {
+  postModel.show();
+  btn_edit_post.addEventListener("click", () => {
+    if (e_title_p.value.trim() && e_body_p.value.trim()) {
       load();
-      createNewPost("PUT", title.value, body.value, post.id);
+      const myHeaders = new Headers();
+      myHeaders.append("Accept", "application/json");
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", `Bearer ${gett}`);
+
+      const raw = JSON.stringify({
+        "title": e_title_p.value,
+        "body": e_body_p.value,
+      });
+
+      const requestOptions = {
+        method: "PUT",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+      fetch(`${url_api}/posts/${post.id}`, requestOptions).then((e) => {
+        stopLoad();
+        window.location.reload();
+      });
     } else {
-      if (!title.value.trim()) {
-        title.nextElementSibling.classList.remove("d-none");
+      if (!e_title_p.value.trim()) {
+        e_title_p.nextElementSibling.classList.remove("d-none");
       } else {
-        title.nextElementSibling.classList.add("d-none");
+        e_title_p.nextElementSibling.classList.add("d-none");
       }
-      if (!body.value.trim()) {
-        body.nextElementSibling.classList.remove("d-none");
+      if (!e_body_p.value.trim()) {
+        e_body_p.nextElementSibling.classList.remove("d-none");
       } else {
-        body.nextElementSibling.classList.add("d-none");
+        e_body_p.nextElementSibling.classList.add("d-none");
       }
     }
-  };
+  });
 }
 
 function delPost(postId) {

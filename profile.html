@@ -14,11 +14,11 @@
 
 <body>
   <!-- Start Modal -->
-  <div class="modal fade" id="form-post" tabindex="-1" aria-labelledby="exampleModalLabel">
+  <div class="modal fade" id="form-new-post" tabindex="-1" aria-labelledby="new-post-title">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Create New Post</h1>
+          <h1 class="modal-title fs-5" id="new-post-title">Create New Post</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -50,6 +50,38 @@
       </div>
     </div>
   </div>
+  
+  <div class="modal fade" id="form-edit-post" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 500px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Post</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="d-flex gap-3 flex-wrap">
+            <div class="row-cs w-100">
+              <div class="mb-3">
+                <label for="post-p" class="form-label">Title</label>
+                <input type="text" class="form-control" id="e-title-p">
+                <small class="text-danger fw-semibold d-none error-msg-p">This Field Is Required</small>
+              </div>
+              <div class="mb-3">
+                <label for="body-p" class="form-label">Body</label>
+                <input type="text" class="form-control" id="e-body-p">
+                <small class="text-danger fw-semibold d-none error-msg-p">This Field Is Required</small>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="btn-edit-post">Edit Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
