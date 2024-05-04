@@ -110,80 +110,11 @@ function generatePostHTML(data, commentHTML) {
           </div>
           <div class="input-group mt-2">
             <input type="text" class="form-control" id="inp-comment" placeholder="add your comment.." aria-describedby="add-comment">
-            <button class="btn btn-primary" type="button" id="add-comment">Add</button>
+            <button class="btn btn-primary" type="button" data-postid="${data.id}" id="add-comment">Add</button>
           </div>
         </div>
       </div>
     </div>`;
-}
-
-// Function to Add a Comment
-function addComment(text) {
-  const myHeaders = new Headers();
-  myHeaders.append("Accept", "application/json");
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append("Authorization", `Bearer ${gett}`);
-
-  const raw = JSON.stringify({ body: text });
-
-  const requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow",
-  };
-
-  fetch(`${url_api}/posts/${postId}/comments?`, requestOptions).then(() => {
-    stopLoad();
-    window.location.reload();
-  });
-}
-
-// Function to Handle Adding Comments
-function handleAddComment() {
-  const inpComment = document.getElementById("inp-comment");
-  const btnComment = document.getElementById("add-comment");
-
-  btnComment.addEventListener("click", () => {
-    if (inpComment.value.trim()) {
-      load();
-      addComment(inpComment.value);
-    }
-  });
-}
-
-function showProfile() {
-  const user_name_comment = document.querySelectorAll(".name-user");
-  const img_name_comment = document.querySelectorAll(".img-user-comment");
-  const user_name_profile = document.querySelector(".user-name-cs");
-  const img_user_profile = document.querySelector(".img-user-profile");
-  const profile = document.querySelectorAll(".btn-profile");
-
-  profile.forEach((profile) => {
-    profile.addEventListener("click", () => {
-      window.location.href = `../profile.html?id=${profile.id}`;
-    });
-  });
-
-  user_name_comment.forEach((name) => {
-    name.addEventListener("click", () => {
-      window.location.href = `../profile.html?id=${name.id}`;
-    });
-  });
-
-  img_name_comment.forEach((img) => {
-    img.addEventListener("click", () => {
-      window.location.href = `../profile.html?id=${img.id}`;
-    });
-  });
-
-  img_user_profile.addEventListener("click", () => {
-    window.location.href = `../profile.html?id=${img_user_profile.id}`;
-  });
-
-  user_name_profile.addEventListener("click", () => {
-    window.location.href = `../profile.html?id=${user_name_profile.id}`;
-  });
 }
 
 // Execute the initial function call

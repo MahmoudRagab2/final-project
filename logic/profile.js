@@ -164,11 +164,16 @@ function addPostsToProfile() {
               }"><i class="bi bi-pen"></i> (${post.comments_count}) Comment</p>
               <p class="m-0">${post.created_at}</p>
             </div>
+            <div class="input-group mt-2">
+            <input type="text" class="form-control" id="inp-comment" placeholder="add your comment.." aria-describedby="add-comment">
+            <button class="btn btn-primary" type="button" data-postid="${post.id}" id="add-comment">Add</button>
+        </div>
           </div>
         </div>
           `;
         }
         showComments();
+        handleAddComment()
       } else {
         posts_box.innerHTML =
           '<h3 class="text-center p-2 " style="background-color: var(--card-color);">There Are No Publications.</h3>';

@@ -79,12 +79,17 @@ if (gett) {
         }) Comment</p>
                 <p class="m-0">${post.created_at}</p>
               </div>
+              <div class="input-group mt-2">
+              <input type="text" class="form-control" id="inp-comment" placeholder="add your comment.." aria-describedby="add-comment">
+              <button class="btn btn-primary" type="button" data-postid="${post.id}" id="add-comment">Add</button>
+          </div>
             </div>
           </div>`;
       }
       posts_container.innerHTML += postsHTML;
       showComments();
       showProfile();
+      handleAddComment()
       requestExecuted = false;
     } else {
       posts_container.innerHTML = `<h2 class="text-center">There Are No Publications.</h2>`;

@@ -95,5 +95,38 @@ function showProfile() {
 }
 
 
+function addComment(text, id) {
+  const myHeaders = new Headers();
+  myHeaders.append("Accept", "application/json");
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Authorization", `Bearer ${gett}`);
 
+  const raw = JSON.stringify({ body: text });
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  fetch(`${url_api}/posts/${id}/comments?`, requestOptions).then(() => {
+    stopLoad();
+    window.location.reload();
+  });
+}
+
+function handleAddComment() {
+  const btnComment = document.querySelectorAll("#add-comment");
+
+  btnComment.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // console.log(btn.dataset.postid);
+      if (btn.previousElementSibling.value.trim()) {
+        load();
+        addComment(btn.previousElementSibling.value , btn.dataset.postid);
+      }
+    });
+  })
+}
 
