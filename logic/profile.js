@@ -143,8 +143,8 @@ function addPostsToProfile() {
           ${
             typeof post.image == "string"
               ? `<div class=" img-body-box position-relative ">
-                  <img class="w-50 h-50 align-self-center card-img img-main" alt="post image"  src="${post.image}">
-                  <img class="w-100 h-100 position-absolute object-fit-cover img-overlay" alt="post image" src="${post.image}" >
+                  <img loading="lazy" class="w-50 h-50 align-self-center card-img img-main" alt="post image"  src="${post.image}">
+                  <img loading="lazy" class="w-100 h-100 position-absolute object-fit-cover img-overlay" alt="post image" src="${post.image}" >
                 </div>`
               : ""
           }
